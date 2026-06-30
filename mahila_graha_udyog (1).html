@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>महिला ग्रह उद्योग - लोणचे, पापड, मसाले, चटणी | कोल्हापूर</title>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Baloo 2', sans-serif; background: #fff8f0; color: #333; }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #d35400, #e67e22);
+            color: white;
+            padding: 25px 20px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        .header h1 { font-size: 2.8em; margin-bottom: 5px; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
+        .header p { font-size: 1.3em; opacity: 0.95; }
+
+        /* Contact Bar */
+        .contact-bar {
+            background: #2c3e50;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-size: 1.15em;
+        }
+        .contact-bar a { color: #f39c12; text-decoration: none; font-weight: 600; }
+        .contact-bar a:hover { text-decoration: underline; }
+
+        /* Products Grid */
+        .container { max-width: 1200px; margin: 0 auto; padding: 30px 20px; }
+        .section-title {
+            text-align: center;
+            font-size: 2.2em;
+            color: #d35400;
+            margin-bottom: 30px;
+            position: relative;
+        }
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: #e67e22;
+            margin: 10px auto;
+            border-radius: 2px;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 2px solid #f0e6d3;
+        }
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+        }
+
+        .product-img {
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+            background: #f5f0e8;
+        }
+        .product-img img { width: 100%; height: 100%; object-fit: cover; }
+
+        .product-info { padding: 20px; }
+        .product-name {
+            font-size: 1.6em;
+            color: #d35400;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+        .product-desc {
+            color: #666;
+            font-size: 1em;
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+        .product-price {
+            font-size: 1.3em;
+            color: #27ae60;
+            font-weight: 700;
+        }
+        .btn-order {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, #27ae60, #2ecc71);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 12px;
+            transition: all 0.3s;
+            text-decoration: none;
+            text-align: center;
+        }
+        .btn-order:hover {
+            background: linear-gradient(135deg, #219a52, #27ae60);
+            transform: scale(1.02);
+        }
+
+        /* About Section */
+        .about-section {
+            background: linear-gradient(135deg, #fdf6e3, #f5e6c8);
+            padding: 40px 20px;
+            border-radius: 16px;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        .about-section h2 { color: #d35400; margin-bottom: 15px; font-size: 1.8em; }
+        .about-section p { font-size: 1.1em; color: #555; line-height: 1.8; max-width: 800px; margin: 0 auto; }
+
+        /* Address */
+        .address-box {
+            background: #2c3e50;
+            color: white;
+            padding: 35px;
+            border-radius: 16px;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .address-box h2 { color: #f39c12; margin-bottom: 15px; font-size: 1.8em; }
+        .address-box p { font-size: 1.2em; line-height: 1.8; }
+        .address-box a { color: #f39c12; text-decoration: none; }
+        .address-box a:hover { text-decoration: underline; }
+
+        /* Footer */
+        .footer {
+            background: #1a252f;
+            color: white;
+            text-align: center;
+            padding: 25px;
+        }
+        .footer p { opacity: 0.8; }
+
+        /* WhatsApp Float */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background: #25d366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2em;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+            cursor: pointer;
+            text-decoration: none;
+            z-index: 1000;
+            transition: transform 0.3s;
+        }
+        .whatsapp-float:hover { transform: scale(1.1); }
+
+        /* Phone Float */
+        .phone-float {
+            position: fixed;
+            bottom: 100px;
+            right: 25px;
+            background: #3498db;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8em;
+            box-shadow: 0 4px 15px rgba(52, 152, 219, 0.4);
+            cursor: pointer;
+            text-decoration: none;
+            z-index: 1000;
+            transition: transform 0.3s;
+        }
+        .phone-float:hover { transform: scale(1.1); }
+
+        @media (max-width: 600px) {
+            .header h1 { font-size: 2em; }
+            .products-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <div class="header">
+        <h1>🌸 महिला ग्रह उद्योग 🌸</h1>
+        <p>घरगुती पद्धतीने तयार केलेले शुद्ध आणि ताजे उत्पादने</p>
+    </div>
+
+    <!-- Contact Bar -->
+    <div class="contact-bar">
+        📞 आमच्याशी संपर्क साधा: <a href="tel:+918080702432">80807 02432</a> | 
+        <a href="https://wa.me/918080702432?text=नमस्कार!%20महिला%20ग्रह%20उद्योग%20बद्दल%20माहिती%20पाहिजे." target="_blank">WhatsApp वर मेसेज करा</a>
+    </div>
+
+    <div class="container">
+
+        <!-- About -->
+        <div class="about-section">
+            <h2>🌿 आमच्या उत्पादनांबद्दल</h2>
+            <p>महिला ग्रह उद्योग हा एक महिला-केंद्रित उद्योग आहे जो कोल्हापूर जिल्ह्यातील कागल तालुक्यातील रा. कौलगे येथे स्थित आहे. 
+            आम्ही पारंपरिक पद्धतीने, शुद्ध आणि नैसर्गिक साहित्य वापरून लोणचे, पापड, गरम मसाले आणि चटणी तयार करतो. 
+            प्रत्येक उत्पादन घरगुती स्वच्छतेत तयार केले जाते आणि त्यात कोणतेही कृत्रिम रंग किंवा preservatives वापरले जात नाहीत.</p>
+        </div>
+
+        <!-- Products -->
+        <h2 class="section-title">🛒 आमची उत्पादने</h2>
+
+        <div class="products-grid">
+
+            <!-- Lonche -->
+            <div class="product-card">
+                <div class="product-img">
+                    <img src="https://kimi-web-img.moonshot.cn/img/madhurasrecipe.com/461071c0bf9e6d91b2cb7f8d457410b4c1dce452.jpg" alt="लोणचे - Traditional Raw Mango Pickle">
+                </div>
+                <div class="product-info">
+                    <div class="product-name">🥭 लोणचे</div>
+                    <div class="product-desc">पारंपरिक कोल्हापुरी पद्धतीने तयार केलेले तिखट आणि चवदार लोणचे. 
+                    आंबा, लिंबू, मिरची आणि मिश्र लोणच्याचे विविध प्रकार उपलब्ध. घरगुती पद्धतीने तयार, शुद्ध आणि नैसर्गिक.</div>
+                    <div class="product-price">₹१०० - ₹३००</div>
+                    <a href="https://wa.me/918080702432?text=नमस्कार!%20मला%20लोणचे%20ऑर्डर%20करायचे%20आहे." class="btn-order" target="_blank">📱 WhatsApp वर ऑर्डर करा</a>
+                </div>
+            </div>
+
+            <!-- Papad -->
+            <div class="product-card">
+                <div class="product-img">
+                    <img src="https://kimi-web-img.moonshot.cn/img/thethingswellmake.com/d7ffb53e8aa5c66ab9c188dfdf69476d5e0f9fa4.jpg" alt="पापड - Homemade Papadum">
+                </div>
+                <div class="product-info">
+                    <div class="product-name">🫓 पापड</div>
+                    <div class="product-desc">घरच्या पद्धतीने तयार केलेले कुरकुरीत पापड. 
+                    उडीद, मूग, चणाडाळ आणि भाजीपाला पापड उपलब्ध. उन्हात वाळवलेले आणि नैसर्गिक. कोल्हापुरी चव.</div>
+                    <div class="product-price">₹८० - ₹२५०</div>
+                    <a href="https://wa.me/918080702432?text=नमस्कार!%20मला%20पापड%20ऑर्डर%20करायचे%20आहे." class="btn-order" target="_blank">📱 WhatsApp वर ऑर्डर करा</a>
+                </div>
+            </div>
+
+            <!-- Garam Masale -->
+            <div class="product-card">
+                <div class="product-img">
+                    <img src="https://kimi-web-img.moonshot.cn/img/spicecravings.com/c2377cacdcbc4a6c49bddfeb651ad98898dbaee9.jpg" alt="गरम मसाले - Homemade Garam Masala">
+                </div>
+                <div class="product-info">
+                    <div class="product-name">🌶️ गरम मसाले</div>
+                    <div class="product-desc">ताज्या मसाल्यांचे मिश्रण, घरीच भाजून दळलेले. 
+                    कोल्हापुरी गरम मसाला, काळा मसाला, चिकन मसाला, आणि इतर प्रकार. शुद्ध आणि ताजे.</div>
+                    <div class="product-price">₹१२० - ₹४००</div>
+                    <a href="https://wa.me/918080702432?text=नमस्कार!%20मला%20गरम%20मसाले%20ऑर्डर%20करायचे%20आहे." class="btn-order" target="_blank">📱 WhatsApp वर ऑर्डर करा</a>
+                </div>
+            </div>
+
+            <!-- Dry Chutney (Sukhi Chatani) -->
+            <div class="product-card">
+                <div class="product-img">
+                    <img src="https://kimi-web-img.moonshot.cn/img/hebbarskitchen.com/3d99ee2bd66428084f9395d04f11b06de728af1b.jpeg" alt="ड्राय चटणी - Dry Chutney Powder">
+                </div>
+                <div class="product-info">
+                    <div class="product-name">🥜 ड्राय चटणी (सुकी चटणी)</div>
+                    <div class="product-desc">शेंगदाणा, खोबरे, लसूण आणि इतर मसाले भाजून तयार केलेली सुकी चटणी. 
+                    वडापाव, भजी आणि इडली-डोसासाठी उत्तम. घरगुती पद्धतीने तयार, तिखट आणि चवदार.</div>
+                    <div class="product-price">₹५० - ₹१८०</div>
+                    <a href="https://wa.me/918080702432?text=नमस्कार!%20मला%20ड्राय%20चटणी%20ऑर्डर%20करायची%20आहे." class="btn-order" target="_blank">📱 WhatsApp वर ऑर्डर करा</a>
+                </div>
+            </div>
+
+            <!-- Lal Chatani (Red Chutney) - Kashmiri style -->
+            <div class="product-card">
+                <div class="product-img">
+                    <img src="https://kimi-web-img.moonshot.cn/img/s3.ap-south-1.amazonaws.com/28e9d52dbbc2e1f15c79aee7639a16fa8d0e1c33.jpg" alt="लाल चटणी - Kashmiri Red Chutney">
+                </div>
+                <div class="product-info">
+                    <div class="product-name">🔴 लाल चटणी</div>
+                    <div class="product-desc">काश्मिरी लाल मिरची आणि लसूणपासून तयार केलेली तिखट लाल चटणी. 
+                    वडापाव, पावभाजी आणि सँडविचसाठी अत्यंत लोकप्रिय. कोल्हापुरी तिखट चव.</div>
+                    <div class="product-price">₹६० - ₹२००</div>
+                    <a href="https://wa.me/918080702432?text=नमस्कार!%20मला%20लाल%20चटणी%20ऑर्डर%20करायची%20आहे." class="btn-order" target="_blank">📱 WhatsApp वर ऑर्डर करा</a>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Address -->
+        <div class="address-box">
+            <h2>📍 आमचा पत्ता</h2>
+            <p>
+                <strong>महिला ग्रह उद्योग</strong><br>
+                रा. कौलगे, ता. कागल, जि. कोल्हापूर<br>
+                महाराष्ट्र, भारत<br><br>
+                📞 <a href="tel:+918080702432">80807 02432</a><br>
+                💬 <a href="https://wa.me/918080702432?text=नमस्कार!%20महिला%20ग्रह%20उद्योग%20बद्दल%20माहिती%20पाहिजे." target="_blank">WhatsApp वर संपर्क करा</a>
+            </p>
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p>© २०२६ महिला ग्रह उद्योग | सर्व हक्क राखीव | रा. कौलगे, ता. कागल, जि. कोल्हापूर</p>
+        <p style="margin-top:8px;">📞 80807 02432 | 💬 WhatsApp वर उपलब्ध</p>
+    </div>
+
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/918080702432?text=नमस्कार!%20महिला%20ग्रह%20उद्योग%20बद्दल%20माहिती%20पाहिजे." class="whatsapp-float" title="WhatsApp वर मेसेज करा" target="_blank">💬</a>
+
+    <!-- Phone Float Button -->
+    <a href="tel:+918080702432" class="phone-float" title="फोन करा">📞</a>
+
+</body>
+</html>
